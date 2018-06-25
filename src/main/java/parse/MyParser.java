@@ -10,7 +10,6 @@ import parse.yandex.zen.ZenParser;
 import java.util.ArrayList;
 
 public class MyParser {
-
     private NewsParser yandexNews;
     private ZenParser yandexZen;
     private BestParser dnsBest;
