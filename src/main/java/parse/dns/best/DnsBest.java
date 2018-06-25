@@ -3,8 +3,6 @@ package parse.dns.best;
 import com.google.gson.Gson;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import parse.dns.Available;
@@ -12,7 +10,6 @@ import parse.dns.ParametrsMap;
 import parse.dns.Product;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DnsBest implements BestParser {
@@ -67,13 +64,16 @@ public class DnsBest implements BestParser {
         WebElement cityInput = driver.findElement(By.xpath(xpathToCityInput));
         //отправляем название города
         cityInput.sendKeys(userCity);
-        // если город найден однозначно (появилась подсказка), то меняет город
-        if (driver.findElements(By.xpath("//div[contains(@class,'show-hint')]")).size()>0) {
-            currentCity = driver.findElement(By.xpath("//div[contains(@class,'show-hint')]/b")).getText().replaceAll("\\s+", "");
-            cityInput.sendKeys(Keys.ENTER);
-        } // город определить не удалось
-        else
+        try{
+            // если город найден однозначно (появилась подсказка), то меняет город
+            if (driver.findElement(By.xpath("//div[contains(@class,'show-hint')]")).isDisplayed()){
+                currentCity = driver.findElement(By.xpath("//div[contains(@class,'show-hint')]/b")).getText().replaceAll("\\s+", "");
+                cityInput.sendKeys(Keys.ENTER);
+            }
+            // иначе сработает исключение
+        } catch (Exception exp) {
             driver.findElement(By.xpath("//div[contains(@class,'select-city-modal') and not(contains(@id,'select-city'))]//button[contains(@data-dismiss,'modal')]")).click();
+        }
         return currentCity;
     }
 
@@ -135,8 +135,8 @@ public class DnsBest implements BestParser {
     private ArrayList<Available> getAllAvailables(Integer productCode) {
         //открываем вкладку наличии в магазинах button
         driver.findElement(By.xpath("//div[@class='clearfix']//a[contains(@role,'button')]")).click();
-        //получаем список магазинов (характеристик) avails-item row avails-items
 
+        //получаем список магазинов (характеристик) avails-item row avails-items
         String xpathToShops = "//div[contains(@class,'avails-item') and contains(@class,'row')]";
 
         //ожидаем загрузки
