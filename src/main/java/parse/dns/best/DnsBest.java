@@ -169,8 +169,6 @@ public class DnsBest implements BestParser {
         });
         //возвращаем объект с параметрами
         return allAvailables;
-
-
     }
 
     private Integer getCountInShop(WebElement order) {
