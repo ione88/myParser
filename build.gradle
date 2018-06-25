@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'myParser'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+   // mavenCentral()
+    maven { url 'http://central.maven.org/maven2' }
+}
+
+dependencies {
+
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.12.0'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
+    // https://mvnrepository.com/artifact/commons-dbutils/commons-dbutils
+    compile group: 'commons-dbutils', name: 'commons-dbutils', version: '1.7'
+    // https://mvnrepository.com/artifact/com.google.inject/guice
+    compile group: 'com.google.inject', name: 'guice', version: '4.2.0'
+    // https://mvnrepository.com/artifact/net.jmob/guice.conf
+    compile group: 'net.jmob', name: 'guice.conf', version: '1.3.0'
+    // https://mvnrepository.com/artifact/javax.el/javax.el-api
+    compile group: 'javax.el', name: 'javax.el-api', version: '3.0.1-b06'
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator-cdi
+    compile group: 'org.hibernate', name: 'hibernate-validator-cdi', version: '6.0.10.Final'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
+    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.0'
+
+}
