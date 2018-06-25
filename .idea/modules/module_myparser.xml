@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_myparser" default="compile.module.myparser">
+  <dirname property="module.myparser.basedir" file="${ant.file.module_myparser}"/>
+  
+  <property name="module.jdk.home.myparser" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.myparser" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.myparser" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.myparser" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="myparser.output.dir" value="${module.myparser.basedir}/../../out/production/myParser"/>
+  <property name="myparser.testoutput.dir" value="${module.myparser.basedir}/../../out/test/myParser"/>
+  
+  <path id="myparser.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="myparser.module.production.classpath">
+    <path refid="${module.jdk.classpath.myparser}"/>
+  </path>
+  
+  <path id="myparser.runtime.production.module.classpath">
+    <pathelement location="${myparser.output.dir}"/>
+  </path>
+  
+  <path id="myparser.module.classpath">
+    <path refid="${module.jdk.classpath.myparser}"/>
+    <pathelement location="${myparser.output.dir}"/>
+  </path>
+  
+  <path id="myparser.runtime.module.classpath">
+    <pathelement location="${myparser.testoutput.dir}"/>
+    <pathelement location="${myparser.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.myparser">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.myparser">
+    <patternset refid="excluded.from.module.myparser"/>
+  </patternset>
+  
+  
+  <target name="compile.module.myparser" depends="compile.module.myparser.production,compile.module.myparser.tests" description="Compile module myParser"/>
+  
+  <target name="compile.module.myparser.production" depends="register.custom.compilers" description="Compile module myParser; production classes"/>
+  
+  <target name="compile.module.myparser.tests" depends="register.custom.compilers,compile.module.myparser.production" description="compile module myParser; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.myparser" description="cleanup module">
+    <delete dir="${myparser.output.dir}"/>
+    <delete dir="${myparser.testoutput.dir}"/>
+  </target>
+</project>
