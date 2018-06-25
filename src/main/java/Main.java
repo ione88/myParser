@@ -20,7 +20,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         //пользователь вводит свой город
-        String userCity = enterCity("Москва");
+        String userCity = enterCity("Якутск");
 
         //внедряем зависимости в классы парсеры
         Injector injector = Guice.createInjector(new MyParseModule());
