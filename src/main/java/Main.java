@@ -7,9 +7,11 @@ import parse.yandex.News;
 import util.DataSourceModule;
 import util.DataSourceMySQL;
 import util.Insert;
+
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) throws Exception {
         //пользователь вводит свой город
@@ -27,6 +29,7 @@ public class Main {
         //собираем лучшие товары (и их доступность) с главной страницы DNS в БД
         RunParseDnsBest(dataSource.getDataSource(), myParser, userCity);
     }
+
     private static String enterCity(String defualtCity) {
         Scanner in = new Scanner(System.in);
         System.out.print("Введите ваш город или нажмите Enter для г." + defualtCity + ": ");
@@ -34,14 +37,17 @@ public class Main {
         if (userCity.isEmpty()) return defualtCity;
         return userCity;
     }
+
     private static void RunParseYandexNews(DataSource dataSource, MyParser parser, String City) throws SQLException {
         for (News news : parser.parseYandexNews(City))
             Insert.news(dataSource, news);
     }
+
     private static void RunParseYandexZen(DataSource dataSource, MyParser parser, String City) throws SQLException {
         for (News news : parser.parseYandexZen(City))
             Insert.news(dataSource, news);
     }
+
     private static void RunParseDnsBest(DataSource dataSource, MyParser parser, String City) throws SQLException {
         for (Product product : parser.parseDnsBest(City)) {
             Insert.product(dataSource, product);
