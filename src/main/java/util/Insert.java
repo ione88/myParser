@@ -49,6 +49,7 @@ public class Insert {
                             available.getCode(), available.getCity(), available.getShopName(), available.getCount(), available.getWaitingForOrderInDays(),
                             available.getCount(), available.getWaitingForOrderInDays());
         } catch (SQLException sqle) {
+
             log.error("Ошибка добавления информации о доспутности товара DNS в базу даных");
             log.error(sqle);
         }
