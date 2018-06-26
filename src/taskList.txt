@@ -1,9 +1,0 @@
-
------ done line -----
-3. текущую дату вставить средствами mysql
-4. mysql insert by dupblicate update
-5. Для ДНС-ШОП
-добавить возможность выбора города (с проверкой, что может город верно выбран)
-1. Парсер должен возвращать результат (список объектов) и не знать про БД
-??? 2. Injector injector = Guice.createInjector(new DnsBestModule());
-DnsBestModule – 1 модуль для всех реализаций

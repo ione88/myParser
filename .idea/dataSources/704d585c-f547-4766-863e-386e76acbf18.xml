@@ -1060,7 +1060,7 @@ shop</ColNames>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="233" name="updateDate">
+    <column id="259" parent="233" name="update">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
