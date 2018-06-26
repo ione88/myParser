@@ -1,5 +1,6 @@
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import org.apache.log4j.Logger;
 import parse.MyParser;
 import parse.dns.Available;
 import parse.dns.Product;
@@ -9,13 +10,15 @@ import util.DataSourceMySQL;
 import util.Insert;
 
 import javax.sql.DataSource;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    // Инициализация логера
+    private static final Logger log = Logger.getLogger(Main.class);
+
+    public static void main(String[] args) {
         //пользователь вводит свой город
-        String userCity = enterCity("Якутск");
+        String userCity = enterCity("Санкт-Петербург");
         //внедряем зависимости в классы парсеры
         Injector injector = Guice.createInjector(new MyParseModule());
         MyParser myParser = injector.getInstance(MyParser.class);
@@ -34,26 +37,34 @@ public class Main {
         Scanner in = new Scanner(System.in);
         System.out.print("Введите ваш город или нажмите Enter для г." + defualtCity + ": ");
         String userCity = in.nextLine();
-        if (userCity.isEmpty()) return defualtCity;
+        if (userCity.isEmpty()) {
+            log.info("Пользователь не указал город, используем город по умолчанию: " + defualtCity);
+            return defualtCity;
+        }
+        log.info("Пользователь указал город: " + userCity);
         return userCity;
     }
 
-    private static void RunParseYandexNews(DataSource dataSource, MyParser parser, String City) throws SQLException {
+    private static void RunParseYandexNews(DataSource dataSource, MyParser parser, String City) {
         for (News news : parser.parseYandexNews(City))
             Insert.news(dataSource, news);
+        log.info("Новости спарсились и уже в базе данных!");
     }
 
-    private static void RunParseYandexZen(DataSource dataSource, MyParser parser, String City) throws SQLException {
+    private static void RunParseYandexZen(DataSource dataSource, MyParser parser, String City) {
         for (News news : parser.parseYandexZen(City))
             Insert.news(dataSource, news);
+        log.info("Лента Дзен спарсилась и уже в базе данных!");
     }
 
-    private static void RunParseDnsBest(DataSource dataSource, MyParser parser, String City) throws SQLException {
+    private static void RunParseDnsBest(DataSource dataSource, MyParser parser, String City) {
         for (Product product : parser.parseDnsBest(City)) {
             Insert.product(dataSource, product);
             //добавляем информацию о доступности товара в магазинах города
+            log.info("в "+product.getAvailables().size()+" магазинах DNS г. "+ City+" есть информация о товаре: " + product.getName());
             for (Available available : product.getAvailables())
                 Insert.available(dataSource, available);
         }
+        log.info("Товары из магазина ДНС спарсилась и уже в базе данных!");
     }
 }
