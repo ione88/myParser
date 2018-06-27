@@ -35,7 +35,7 @@ public class Main {
 
     private static String enterCity(String defualtCity) {
         Scanner in = new Scanner(System.in);
-        System.out.print("Введите ваш город или нажмите Enter для г." + defualtCity + ": ");
+        System.out.print("Введите ваш город или сразу нажмите Enter для г." + defualtCity + ": ");
         String userCity = in.nextLine();
         if (userCity.isEmpty()) {
             log.info("Пользователь не указал город, используем город по умолчанию: " + defualtCity);

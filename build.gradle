@@ -8,8 +8,7 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-   // mavenCentral()
-    maven { url 'http://central.maven.org/maven2' }
+    mavenCentral()
 }
 
 dependencies {
