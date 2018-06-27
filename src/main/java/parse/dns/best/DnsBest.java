@@ -96,7 +96,7 @@ public class DnsBest implements BestParser {
             //Описание – строка
             product.setDescription(driver.findElement(By.id("description")).findElement(By.tagName("p")).getText());
             //Превращаем объект с параметами в gson строку продукты
-            product.setParametrs((new Gson()).toJson(getAllParametrsMaps()));
+            product.setParametrsJson((new Gson()).toJson(getAllParametrsMaps()));
         } catch (WebDriverException wde) {
             log.error("Ошибка при парсинге товара г. " + city + " на странице товара " + url);
             log.error(wde);

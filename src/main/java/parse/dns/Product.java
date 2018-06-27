@@ -18,7 +18,7 @@ public class Product {
     private ArrayList<Available> availables;
 
     // GSON строка с параметрами.
-    private String parametrs;
+    private String parametrsJson;
 
     public String getName() {
         return name;
@@ -60,12 +60,12 @@ public class Product {
         this.url = url;
     }
 
-    public String getParametrs() {
-        return parametrs;
+    public String getParametrsJson() {
+        return parametrsJson;
     }
 
-    public void setParametrs(String parametrs) {
-        this.parametrs = parametrs;
+    public void setParametrsJson(String parametrsJson) {
+        this.parametrsJson = parametrsJson;
     }
 
     public ArrayList<Available> getAvailables() {

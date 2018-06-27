@@ -14,14 +14,12 @@ public class MyParser {
     private ZenParser yandexZen;
     private BestParser dnsBest;
 
-
     @Inject
     public MyParser(NewsParser newsParserNews, ZenParser zenParserZen, BestParser bestParserBest) {
         this.yandexNews = newsParserNews;
         this.yandexZen = zenParserZen;
         this.dnsBest = bestParserBest;
     }
-
 
     public ArrayList<News> parseYandexNews(String city) {
         return yandexNews.parser(city);

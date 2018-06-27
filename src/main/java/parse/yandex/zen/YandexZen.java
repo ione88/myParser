@@ -49,7 +49,7 @@ public class YandexZen implements ZenParser {
     private News getNews(WebElement webnews, String typeOfNews) {
         News news = new News();
         news.setUrl(webnews.getAttribute("href"));
-        news.setTitle(webnews.findElement(By.className("clamp__visible-tokens")).getText());
+        news.setTitle(webnews.findElement(By.className(".//clamp__visible-tokens")).getText());
         news.setTypeOfNews(typeOfNews);
         return news;
     }

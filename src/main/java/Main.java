@@ -41,30 +41,30 @@ public class Main {
             log.info("Пользователь не указал город, используем город по умолчанию: " + defualtCity);
             return defualtCity;
         }
-        log.info("Пользователь указал город: " + userCity);
+        log.debug("Пользователь указал город: " + userCity);
         return userCity;
     }
 
     private static void RunParseYandexNews(DataSource dataSource, MyParser parser, String City) {
         for (News news : parser.parseYandexNews(City))
             Insert.news(dataSource, news);
-        log.info("Новости спарсились и уже в базе данных!");
+        log.debug("Новости спарсились и уже в базе данных!");
     }
 
     private static void RunParseYandexZen(DataSource dataSource, MyParser parser, String City) {
         for (News news : parser.parseYandexZen(City))
             Insert.news(dataSource, news);
-        log.info("Лента Дзен спарсилась и уже в базе данных!");
+        log.debug("Лента Дзен спарсилась и уже в базе данных!");
     }
 
     private static void RunParseDnsBest(DataSource dataSource, MyParser parser, String City) {
         for (Product product : parser.parseDnsBest(City)) {
             Insert.product(dataSource, product);
             //добавляем информацию о доступности товара в магазинах города
-            log.info("в "+product.getAvailables().size()+" магазинах DNS г. "+ City+" есть информация о товаре: " + product.getName());
+            log.debug("в "+product.getAvailables().size()+" магазинах DNS г. "+ City+" есть информация о товаре: " + product.getName());
             for (Available available : product.getAvailables())
                 Insert.available(dataSource, available);
         }
-        log.info("Товары из магазина ДНС спарсилась и уже в базе данных!");
+        log.debug("Товары из магазина ДНС спарсилась и уже в базе данных!");
     }
 }
