@@ -29,6 +29,4 @@ public class News {
     public void setTypeOfNews(String typeOfNews) {
         this.typeOfNews = typeOfNews;
     }
-
-
 }
