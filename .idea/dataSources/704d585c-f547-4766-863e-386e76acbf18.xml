@@ -918,192 +918,240 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="231" parent="6" name="available"/>
-    <table id="232" parent="6" name="dnsproducts"/>
-    <table id="233" parent="6" name="yandexnews">
+    <table id="231" parent="6" name="dns_product_available"/>
+    <table id="232" parent="6" name="dns_products"/>
+    <table id="233" parent="6" name="news">
+      <Engine>MyISAM</Engine>
+    </table>
+    <table id="234" parent="6" name="user">
+      <Engine>MyISAM</Engine>
+    </table>
+    <table id="235" parent="6" name="yandex_news">
       <Comment>tables with all news from yandex.ru</Comment>
     </table>
-    <column id="234" parent="231" name="id">
+    <column id="236" parent="231" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="231" name="code">
+    <column id="237" parent="231" name="code">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="236" parent="231" name="city">
+    <column id="238" parent="231" name="city">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="237" parent="231" name="shop">
+    <column id="239" parent="231" name="shop">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="238" parent="231" name="count">
+    <column id="240" parent="231" name="count">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="239" parent="231" name="waitingForOrderInDays">
+    <column id="241" parent="231" name="waitingForOrderInDays">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="231" name="updateDate">
+    <column id="242" parent="231" name="updateDate">
       <Position>7</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="241" parent="231" name="available_id_uindex">
+    <index id="243" parent="231" name="available_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="242" parent="231" name="un_available">
+    <index id="244" parent="231" name="un_available">
       <ColNames>code
 city
 shop</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="243" parent="231" name="PRIMARY">
+    <key id="245" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="244" parent="231" name="available_id_uindex">
+    <key id="246" parent="231" name="available_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>available_id_uindex</UnderlyingIndexName>
     </key>
-    <key id="245" parent="231" name="un_available">
+    <key id="247" parent="231" name="un_available">
       <ColNames>code
 city
 shop</ColNames>
       <UnderlyingIndexName>un_available</UnderlyingIndexName>
     </key>
-    <column id="246" parent="232" name="id">
+    <column id="248" parent="232" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="232" name="code">
+    <column id="249" parent="232" name="code">
       <Position>2</Position>
       <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="232" name="name">
+    <column id="250" parent="232" name="name">
       <Position>3</Position>
       <DataType>tinytext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="232" name="price">
+    <column id="251" parent="232" name="price">
       <Position>4</Position>
       <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="232" name="description">
+    <column id="252" parent="232" name="description">
       <Position>5</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="232" name="parametrs">
+    <column id="253" parent="232" name="parametrs">
       <Position>6</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="232" name="url">
+    <column id="254" parent="232" name="url">
       <Position>7</Position>
       <DataType>tinytext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="253" parent="232" name="table_name_id_uindex">
+    <index id="255" parent="232" name="table_name_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="254" parent="232" name="table_name_code_uindex">
+    <index id="256" parent="232" name="table_name_code_uindex">
       <ColNames>code</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="255" parent="232" name="PRIMARY">
+    <key id="257" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="256" parent="232" name="table_name_id_uindex">
+    <key id="258" parent="232" name="table_name_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>table_name_id_uindex</UnderlyingIndexName>
     </key>
-    <key id="257" parent="232" name="table_name_code_uindex">
+    <key id="259" parent="232" name="table_name_code_uindex">
       <ColNames>code</ColNames>
       <UnderlyingIndexName>table_name_code_uindex</UnderlyingIndexName>
     </key>
-    <column id="258" parent="233" name="id">
+    <column id="260" parent="233" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="261" parent="233" name="title">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="262" parent="233" name="url">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="263" parent="233" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="264" parent="234" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="265" parent="234" name="email">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="266" parent="234" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="267" parent="234" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="268" parent="235" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="233" name="update">
+    <column id="269" parent="235" name="update">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="233" name="title">
+    <column id="270" parent="235" name="title">
       <Position>3</Position>
       <DataType>varchar(500)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="233" name="url">
+    <column id="271" parent="235" name="url">
       <Position>4</Position>
       <DataType>varchar(500)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="233" name="type">
+    <column id="272" parent="235" name="type">
       <Position>5</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="263" parent="233" name="yandexnews_id_uindex">
+    <index id="273" parent="235" name="yandexnews_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="264" parent="233" name="yandexnews_title_uindex">
+    <index id="274" parent="235" name="yandexnews_title_uindex">
       <ColNames>title</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="265" parent="233" name="PRIMARY">
+    <key id="275" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="266" parent="233" name="yandexnews_id_uindex">
+    <key id="276" parent="235" name="yandexnews_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>yandexnews_id_uindex</UnderlyingIndexName>
     </key>
-    <key id="267" parent="233" name="yandexnews_title_uindex">
+    <key id="277" parent="235" name="yandexnews_title_uindex">
       <ColNames>title</ColNames>
       <UnderlyingIndexName>yandexnews_title_uindex</UnderlyingIndexName>
     </key>

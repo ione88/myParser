@@ -17,7 +17,7 @@ public class Insert {
     public static void news(DataSource dataSource, News news) {
         try {
             new QueryRunner(dataSource).update
-                    ("INSERT INTO yandexnews (update, title, url, type) VALUES (CURRENT_TIMESTAMP(), ?, ?, ?)" +
+                    ("INSERT INTO yandex_news (update, title, url, type) VALUES (CURRENT_TIMESTAMP(), ?, ?, ?)" +
                                     "ON DUPLICATE KEY UPDATE url=?",
                             news.getTitle(), news.getUrl(), news.getTypeOfNews(),
                             news.getUrl());
@@ -30,7 +30,7 @@ public class Insert {
     public static void product(DataSource dataSource, Product product) {
         try {
             new QueryRunner(dataSource).update
-                    ("INSERT INTO dnsproducts (code, name, price, description, parametrsJson, url) VALUES (?, ?, ?, ?, ?, ?)" +
+                    ("INSERT INTO dns_products (code, name, price, description, parametrsJson, url) VALUES (?, ?, ?, ?, ?, ?)" +
                                     "ON DUPLICATE KEY UPDATE name = ?, price = ?, description = ?, parametrsJson = ?, url = ?",
                             product.getCode(), product.getName(), product.getPrice(), product.getDescription(), product.getParametrsJson(), product.getUrl(),
                             product.getName(), product.getPrice(), product.getDescription(), product.getParametrsJson(), product.getUrl());
@@ -43,7 +43,7 @@ public class Insert {
     public static void available(DataSource dataSource, Available available) {
         try {
             new QueryRunner(dataSource).update
-                    ("INSERT INTO available (code, city, shop, count, waitingForOrderInDays, update) VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP())" +
+                    ("INSERT INTO dns_products_available (code, city, shop, count, waitingForOrderInDays, update) VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP())" +
                                     "ON DUPLICATE KEY UPDATE count=?, waitingForOrderInDays=?, updateDate=CURRENT_TIMESTAMP()",
                             available.getCode(), available.getCity(), available.getShopName(), available.getCount(), available.getWaitingForOrderInDays(),
                             available.getCount(), available.getWaitingForOrderInDays());
