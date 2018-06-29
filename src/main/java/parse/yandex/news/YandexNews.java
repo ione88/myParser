@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import parse.yandex.News;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +15,14 @@ public class YandexNews implements NewsParser {
     private WebDriver driver;
 
     @Override
-    public ArrayList<News> parser(String userCity){
-        driver = new ChromeDriver();
-        driver.manage().window().setSize(new Dimension(1920,1024));
-        driver.get("https://yandex.ru/");
+    public ArrayList<News> parser(String userCity) {
+        try {
+            driver = new ChromeDriver();
+            driver.manage().window().setSize(new Dimension(1920, 1024));
+            driver.get("https://yandex.ru/");
+        } catch (Exception e) {
+            log.error("Ошибка при запуске браузера на парсинге новостной ленты Yandex.ru \n" + e);
+        }
         //создаем новый пустой список новостей, которые будем парсить
         ArrayList<News> newsfeed = new ArrayList<>();
 
@@ -34,7 +39,7 @@ public class YandexNews implements NewsParser {
             List<WebElement> regionnewsfeed = driver.findElements(By.xpath("//div[contains(@class111,'content-tabs__items_active_true')]//ol[not(contains(@class,'news__animation-list'))]//a"));
             //добавляем региональные новости в список
             regionnewsfeed.forEach(regionnews -> newsfeed.add(getNews(regionnews, "region")));
-        } catch (WebDriverException wde){
+        } catch (WebDriverException wde) {
             log.error("Ошибка чтения новостей с главной страницы Яндекса\n" + wde);
         }
 
@@ -44,7 +49,7 @@ public class YandexNews implements NewsParser {
         return newsfeed;
     }
 
-    private News getNews(WebElement webnews, String typeOfNews){
+    private News getNews(WebElement webnews, String typeOfNews) {
         News news = new News();
         news.setUrl(webnews.getAttribute("href"));
         news.setTitle(webnews.getAttribute("aria-label"));

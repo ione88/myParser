@@ -23,9 +23,13 @@ public class DnsBest implements BestParser {
 
     @Override
     public ArrayList<Product> parser(String userCity) {
-        driver = new ChromeDriver();
-        driver.manage().window().setSize(new Dimension(1920, 1024));
-        driver.get("https://www.dns-shop.ru/");
+        try {
+            driver = new ChromeDriver();
+            driver.manage().window().setSize(new Dimension(1920, 1024));
+            driver.get("https://www.dns-shop.ru/");
+        } catch(Exception e) {
+            log.error("Ошибка при запуске браузера на парсинге товаров DNS \n" + e);
+        }
         //создаем новый пустой список продуктов, в который будем парсить
         ArrayList<Product> products = new ArrayList<>();
         // передаю в функцию изменения города, город который хочет пользователь и город указаный сейчас на сайте

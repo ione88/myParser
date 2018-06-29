@@ -21,16 +21,21 @@ public class YandexZen implements ZenParser {
 
     @Override
     public ArrayList<News> parser(String userCity) {
-        driver = new ChromeDriver();
-        driver.manage().window().setSize(new Dimension(1920, 1024));
-        driver.get("https://yandex.ru/");
-        jse = (JavascriptExecutor) driver;
+        try {
+            driver = new ChromeDriver();
+            driver.manage().window().setSize(new Dimension(1920, 1024));
+            driver.get("https://yandex.ru/");
+        } catch (Exception e) {
+            log.error("Ошибка при запуске браузера на парсинге Дзен ленты Yandex.ru \n" + e);
+        }
+
         //создаем новый пустой список новостей, которые будем парсить
         ArrayList<News> newsfeed = new ArrayList<>();
 
         try {
-            jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.linkText("Дзен")));
+            jse = (JavascriptExecutor) driver;
             //опустились вниз и ожидаем подгрузки ленты Дзен
+            jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.linkText("Дзен")));
             (new WebDriverWait(driver, 20))
                     .until(ExpectedConditions.presenceOfElementLocated(By.className("feed__row")));
             //получаем список Дзен новостей
@@ -49,7 +54,7 @@ public class YandexZen implements ZenParser {
     private News getNews(WebElement webnews, String typeOfNews) {
         News news = new News();
         news.setUrl(webnews.getAttribute("href"));
-        news.setTitle(webnews.findElement(By.className(".//clamp__visible-tokens")).getText());
+        news.setTitle(webnews.findElement(By.xpath(".//span[@class='clamp__visible-tokens']")).getText());
         news.setTypeOfNews(typeOfNews);
         return news;
     }
