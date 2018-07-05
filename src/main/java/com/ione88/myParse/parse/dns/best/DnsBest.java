@@ -1,14 +1,14 @@
-package parse.dns.best;
+package com.ione88.myParse.parse.dns.best;
 
 import com.google.gson.Gson;
+import com.ione88.myParse.entity.Available;
+import com.ione88.myParse.entity.Product;
+import com.ione88.myParse.parse.dns.ParametrsMap;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import parse.dns.Available;
-import parse.dns.ParametrsMap;
-import parse.dns.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,19 +100,18 @@ public class DnsBest implements BestParser {
             //Описание – строка
             product.setDescription(driver.findElement(By.id("description")).findElement(By.tagName("p")).getText());
             //Превращаем объект с параметами в gson строку продукты
-            product.setParametrsJson((new Gson()).toJson(getAllParametrsMaps()));
+            product.setParametrsJson((new Gson()).toJson(getAllParametrMap()));
+            //Сохраняем информацию о доступности в магазинах
+            product.setAvailables(getAllAvailable(product.getCode()));
         } catch (WebDriverException wde) {
             log.error("Ошибка при парсинге товара г. " + city + " на странице товара " + url);
             log.error(wde);
         }
-
-        //Сохраняем информацию о доступности в магазинах
-        product.setAvailables(getAllAvailables(product.getCode()));
         return product;
     }
 
     //считывает Характеристики в объект
-    private ArrayList<ParametrsMap> getAllParametrsMaps() {
+    private ArrayList<ParametrsMap> getAllParametrMap() {
         //создаем новый пустой список параметров
         ArrayList<ParametrsMap> allParametrsMaps = new ArrayList<>();
         //открываем вкладку характеристики
@@ -140,7 +139,7 @@ public class DnsBest implements BestParser {
         return allParametrsMaps;
     }
 
-    private ArrayList<Available> getAllAvailables(Integer productCode) {
+    private ArrayList<Available> getAllAvailable(Integer productCode) {
         //создаем новый пустой список наличии в магазинах
         ArrayList<Available> allAvailables = new ArrayList<>();
 
@@ -158,18 +157,18 @@ public class DnsBest implements BestParser {
                 Available available = new Available();
                 available.setCode(productCode);
                 available.setCity(city);
-                available.setShopName(shop.findElement(By.xpath(".//div[@class='shop-name']//a")).getText());
+                available.setShop(shop.findElement(By.xpath(".//div[@class='shop-name']//a")).getText());
                 // проверяем если товар в наличии то записываем его количество
                 try {
                     shop.findElement(By.xpath(".//div[contains(@class,'available')]"));
                     String order = shop.findElement(By.xpath(".//div[contains(@class,'col-3')]")).getText();
                     available.setCount(getCount(order));
-                    available.setWaitingForOrderInDays(0);
+                    available.setWaitingDays(0);
                     // иначе записываем требуемое количество дней ожидания товара
                 } catch (WebDriverException wde) {
                     available.setCount(0);
                     String order = shop.findElement(By.xpath(".//div[contains(@class,'col-3')]")).getText();
-                    available.setWaitingForOrderInDays(getCount(order));
+                    available.setWaitingDays(getCount(order));
                 }
                 allAvailables.add(available);
             });

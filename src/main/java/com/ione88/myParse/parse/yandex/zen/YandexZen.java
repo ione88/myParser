@@ -1,13 +1,11 @@
-package parse.yandex.zen;
+package com.ione88.myParse.parse.yandex.zen;
 
+import com.ione88.myParse.entity.News;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import parse.yandex.News;
-import parse.yandex.news.YandexNews;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,11 +49,11 @@ public class YandexZen implements ZenParser {
         return newsfeed;
     }
 
-    private News getNews(WebElement webnews, String typeOfNews) {
+    private News getNews(WebElement webnews, String type) {
         News news = new News();
         news.setUrl(webnews.getAttribute("href"));
         news.setTitle(webnews.findElement(By.xpath(".//span[@class='clamp__visible-tokens']")).getText());
-        news.setTypeOfNews(typeOfNews);
+        news.setType(type);
         return news;
     }
 }

@@ -918,75 +918,75 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="231" parent="6" name="dns_products"/>
-    <table id="232" parent="6" name="dns_products_available"/>
-    <table id="233" parent="6" name="employees"/>
-    <table id="234" parent="6" name="user">
+    <table id="231" parent="6" name="dns_product">
       <Engine>MyISAM</Engine>
     </table>
-    <table id="235" parent="6" name="yandex_news">
-      <Comment>tables with all news from yandex.ru</Comment>
+    <table id="232" parent="6" name="dns_product_available">
+      <Engine>MyISAM</Engine>
     </table>
-    <column id="236" parent="231" name="id">
+    <table id="233" parent="6" name="employees"/>
+    <table id="234" parent="6" name="hibernate_sequence">
+      <Engine>MyISAM</Engine>
+    </table>
+    <table id="235" parent="6" name="message">
+      <Engine>MyISAM</Engine>
+    </table>
+    <table id="236" parent="6" name="user">
+      <Engine>MyISAM</Engine>
+    </table>
+    <table id="237" parent="6" name="yandex_news">
+      <Engine>MyISAM</Engine>
+    </table>
+    <column id="238" parent="231" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="237" parent="231" name="code">
+    <column id="239" parent="231" name="code">
       <Position>2</Position>
-      <DataType>bigint(20)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="238" parent="231" name="name">
-      <Position>3</Position>
-      <DataType>tinytext|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="239" parent="231" name="price">
-      <Position>4</Position>
-      <DataType>bigint(20)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="240" parent="231" name="description">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="241" parent="231" name="name">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="242" parent="231" name="parametrs_json">
       <Position>5</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="241" parent="231" name="parametrs_json">
+    <column id="243" parent="231" name="price">
       <Position>6</Position>
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="242" parent="231" name="url">
+    <column id="244" parent="231" name="url">
       <Position>7</Position>
-      <DataType>tinytext|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="243" parent="231" name="table_name_id_uindex">
+    <index id="245" parent="231" name="dns_product_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="244" parent="231" name="table_name_code_uindex">
-      <ColNames>code</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <key id="245" parent="231" name="PRIMARY">
+    <key id="246" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="246" parent="231" name="table_name_id_uindex">
+    <key id="247" parent="231" name="dns_product_id_uindex">
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>table_name_id_uindex</UnderlyingIndexName>
-    </key>
-    <key id="247" parent="231" name="table_name_code_uindex">
-      <ColNames>code</ColNames>
-      <UnderlyingIndexName>table_name_code_uindex</UnderlyingIndexName>
+      <UnderlyingIndexName>dns_product_id_uindex</UnderlyingIndexName>
     </key>
     <column id="248" parent="232" name="id">
       <Position>1</Position>
@@ -995,50 +995,43 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="232" name="code">
+    <column id="249" parent="232" name="created">
       <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="250" parent="232" name="city">
-      <Position>3</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="251" parent="232" name="shop">
-      <Position>4</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="252" parent="232" name="count">
-      <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="253" parent="232" name="waitingForOrderInDays">
-      <Position>6</Position>
-      <DataType>int(11)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="254" parent="232" name="updated">
-      <Position>7</Position>
       <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="255" parent="232" name="available_id_uindex">
+    <column id="250" parent="232" name="updated">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="251" parent="232" name="code">
+      <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="252" parent="232" name="city">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="253" parent="232" name="shop">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="254" parent="232" name="count">
+      <Position>7</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="255" parent="232" name="waiting_days">
+      <Position>8</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="256" parent="232" name="dns_product_available_id_uindex">
       <ColNames>id</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <index id="256" parent="232" name="un_available">
-      <ColNames>code
-city
-shop</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
@@ -1047,145 +1040,186 @@ shop</ColNames>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="258" parent="232" name="available_id_uindex">
+    <key id="258" parent="232" name="dns_product_available_id_uindex">
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>available_id_uindex</UnderlyingIndexName>
+      <UnderlyingIndexName>dns_product_available_id_uindex</UnderlyingIndexName>
     </key>
-    <key id="259" parent="232" name="un_available">
-      <ColNames>code
-city
-shop</ColNames>
-      <UnderlyingIndexName>un_available</UnderlyingIndexName>
-    </key>
-    <column id="260" parent="233" name="emp_no">
+    <column id="259" parent="233" name="emp_no">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="233" name="birth_date">
+    <column id="260" parent="233" name="birth_date">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="233" name="first_name">
+    <column id="261" parent="233" name="first_name">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="233" name="last_name">
+    <column id="262" parent="233" name="last_name">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="233" name="hire_date">
+    <column id="263" parent="233" name="hire_date">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="233" name="gender">
+    <column id="264" parent="233" name="gender">
       <Position>6</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="266" parent="233" name="employees_empNo_uindex">
+    <index id="265" parent="233" name="employees_empNo_uindex">
       <ColNames>emp_no</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="267" parent="233" name="employees_last_name_uindex">
+    <index id="266" parent="233" name="employees_last_name_uindex">
       <ColNames>last_name</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="268" parent="233" name="PRIMARY">
+    <key id="267" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>emp_no</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="269" parent="233" name="employees_empNo_uindex">
+    <key id="268" parent="233" name="employees_empNo_uindex">
       <ColNames>emp_no</ColNames>
       <UnderlyingIndexName>employees_empNo_uindex</UnderlyingIndexName>
     </key>
-    <key id="270" parent="233" name="employees_last_name_uindex">
+    <key id="269" parent="233" name="employees_last_name_uindex">
       <ColNames>last_name</ColNames>
       <UnderlyingIndexName>employees_last_name_uindex</UnderlyingIndexName>
     </key>
-    <column id="271" parent="234" name="id">
+    <column id="270" parent="234" name="next_val">
+      <Position>1</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="271" parent="235" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="272" parent="234" name="email">
+    <column id="272" parent="235" name="tag">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="273" parent="234" name="name">
+    <column id="273" parent="235" name="text">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="274" parent="234" name="PRIMARY">
+    <index id="274" parent="235" name="UK_dju4vurus6uoocx8pass9ggoj">
+      <ColNames>text</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="275" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="275" parent="235" name="id">
+    <key id="276" parent="235" name="UK_dju4vurus6uoocx8pass9ggoj">
+      <ColNames>text</ColNames>
+      <UnderlyingIndexName>UK_dju4vurus6uoocx8pass9ggoj</UnderlyingIndexName>
+    </key>
+    <column id="277" parent="236" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="278" parent="236" name="email">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="279" parent="236" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="280" parent="236" name="user_email_uindex">
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="281" parent="236" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="282" parent="236" name="user_email_uindex">
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>user_email_uindex</UnderlyingIndexName>
+    </key>
+    <column id="283" parent="237" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="276" parent="235" name="updated">
+    <column id="284" parent="237" name="created">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="277" parent="235" name="title">
+    <column id="285" parent="237" name="updated">
       <Position>3</Position>
-      <DataType>varchar(500)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="278" parent="235" name="url">
+    <column id="286" parent="237" name="title">
       <Position>4</Position>
-      <DataType>varchar(500)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="279" parent="235" name="type">
+    <column id="287" parent="237" name="type">
       <Position>5</Position>
-      <DataType>varchar(20)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="280" parent="235" name="yandexnews_id_uindex">
+    <column id="288" parent="237" name="url">
+      <Position>6</Position>
+      <DataType>text|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="289" parent="237" name="yandex_news_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="281" parent="235" name="yandexnews_title_uindex">
+    <index id="290" parent="237" name="yandex_news_title_uindex">
       <ColNames>title</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="282" parent="235" name="PRIMARY">
+    <key id="291" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="283" parent="235" name="yandexnews_id_uindex">
+    <key id="292" parent="237" name="yandex_news_id_uindex">
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>yandexnews_id_uindex</UnderlyingIndexName>
+      <UnderlyingIndexName>yandex_news_id_uindex</UnderlyingIndexName>
     </key>
-    <key id="284" parent="235" name="yandexnews_title_uindex">
+    <key id="293" parent="237" name="yandex_news_title_uindex">
       <ColNames>title</ColNames>
-      <UnderlyingIndexName>yandexnews_title_uindex</UnderlyingIndexName>
+      <UnderlyingIndexName>yandex_news_title_uindex</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

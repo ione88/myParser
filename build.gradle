@@ -1,6 +1,5 @@
-plugins {
-    id 'java'
-}
+apply plugin: 'java'
+compileJava.options.encoding = 'UTF-8'
 
 group 'myParser'
 version '1.0-SNAPSHOT'

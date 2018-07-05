@@ -1,11 +1,11 @@
-package parse;
+package com.ione88.myParse.parse;
 
 import com.google.inject.Inject;
-import parse.dns.Product;
-import parse.dns.best.BestParser;
-import parse.yandex.News;
-import parse.yandex.news.NewsParser;
-import parse.yandex.zen.ZenParser;
+import com.ione88.myParse.entity.Product;
+import com.ione88.myParse.parse.dns.best.BestParser;
+import com.ione88.myParse.entity.News;
+import com.ione88.myParse.parse.yandex.news.NewsParser;
+import com.ione88.myParse.parse.yandex.zen.ZenParser;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package parse.dns;
+package com.ione88.myParse.entity;
 
 public class Available {
     //Код товара – уникальное поле, целое
@@ -6,11 +6,11 @@ public class Available {
     //город магазина
     private String city;
     //название магазина
-    private String shopName;
+    private String shop;
     //количество товара в наличии
     private Integer count;
     //количество дней ожидания при заказе
-    private Integer waitingForOrderInDays;
+    private Integer waitingDays;
 
     public Integer getCode() {
         return code;
@@ -28,12 +28,12 @@ public class Available {
         this.city = city;
     }
 
-    public String getShopName() {
-        return shopName;
+    public String getShop() {
+        return shop;
     }
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
+    public void setShop(String shop) {
+        this.shop = shop;
     }
 
     public Integer getCount() {
@@ -44,11 +44,11 @@ public class Available {
         this.count = count;
     }
 
-    public Integer getWaitingForOrderInDays() {
-        return waitingForOrderInDays;
+    public Integer getWaitingDays() {
+        return waitingDays;
     }
 
-    public void setWaitingForOrderInDays(Integer waitingForOrderInDays) {
-        this.waitingForOrderInDays = waitingForOrderInDays;
+    public void setWaitingDays(Integer waitingDays) {
+        this.waitingDays = waitingDays;
     }
 }

@@ -1,4 +1,4 @@
-package parse.dns;
+package com.ione88.myParse.parse.dns;
 
 import java.util.HashMap;
 

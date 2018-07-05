@@ -1,32 +1,23 @@
-package parse.dns;
+package com.ione88.myParse.entity;
 
 import java.util.ArrayList;
 
 public class Product {
-    //Наименование - строка
-    private String name;
     //Код товара – уникальное поле, целое
     private Integer code;
+    //Наименование - строка
+    private String name;
     //Цена - целое
     private Integer price;
     //Описание – строка
     private String description;
     //Url - строка
     private String url;
-
+    // GSON строка с параметрами.
+    private String parametrsJson;
     //список магазинов, где товар в наличии или доступен заказ
     private ArrayList<Available> availables;
 
-    // GSON строка с параметрами.
-    private String parametrsJson;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Integer getCode() {
         return code;
@@ -34,6 +25,14 @@ public class Product {
 
     public void setCode(Integer code) {
         this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getPrice() {
@@ -72,7 +71,7 @@ public class Product {
         return availables;
     }
 
-    public void setAvailables(ArrayList<Available> avalibles) {
-        this.availables = avalibles;
+    public void setAvailables(ArrayList<Available> availables) {
+        this.availables = availables;
     }
 }

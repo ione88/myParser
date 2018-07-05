@@ -1,6 +1,6 @@
-package parse.dns.best;
+package com.ione88.myParse.parse.dns.best;
 
-import parse.dns.Product;
+import com.ione88.myParse.entity.Product;
 
 import java.util.ArrayList;
 

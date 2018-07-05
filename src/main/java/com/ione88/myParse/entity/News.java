@@ -1,10 +1,10 @@
-package parse.yandex;
+package com.ione88.myParse.entity;
 
 public class News {
 
     private String title;
     private String url;
-    private String typeOfNews;
+    private String type;
 
     public String getTitle() {
         return title;
@@ -22,11 +22,11 @@ public class News {
         this.url = url;
     }
 
-    public String getTypeOfNews() {
-        return typeOfNews;
+    public String getType() {
+        return type;
     }
 
-    public void setTypeOfNews(String typeOfNews) {
-        this.typeOfNews = typeOfNews;
+    public void setType(String type ) {
+        this.type = type;
     }
 }

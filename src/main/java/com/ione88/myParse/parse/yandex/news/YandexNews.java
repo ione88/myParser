@@ -1,12 +1,13 @@
-package parse.yandex.news;
+package com.ione88.myParse.parse.yandex.news;
 
+import com.ione88.myParse.entity.News;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import parse.yandex.News;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class YandexNews implements NewsParser {
     // Инициализация логера
@@ -18,7 +19,9 @@ public class YandexNews implements NewsParser {
     public ArrayList<News> parser(String userCity) {
         try {
             driver = new ChromeDriver();
+
             driver.manage().window().setSize(new Dimension(1920, 1024));
+
             driver.get("https://yandex.ru/");
         } catch (Exception e) {
             log.error("Ошибка при запуске браузера на парсинге новостной ленты Yandex.ru \n" + e);
@@ -36,7 +39,7 @@ public class YandexNews implements NewsParser {
             // tabnews_region
             driver.findElement(By.xpath("//div[@id='tabnews_region']//a")).click();
             //получаем список 4  новостей из главное категории
-            List<WebElement> regionnewsfeed = driver.findElements(By.xpath("//div[contains(@class111,'content-tabs__items_active_true')]//ol[not(contains(@class,'news__animation-list'))]//a"));
+            List<WebElement> regionnewsfeed = driver.findElements(By.xpath("//div[contains(@class,'content-tabs__items_active_true')]//ol[not(contains(@class,'news__animation-list'))]//a"));
             //добавляем региональные новости в список
             regionnewsfeed.forEach(regionnews -> newsfeed.add(getNews(regionnews, "region")));
         } catch (WebDriverException wde) {
@@ -49,11 +52,11 @@ public class YandexNews implements NewsParser {
         return newsfeed;
     }
 
-    private News getNews(WebElement webnews, String typeOfNews) {
+    private News getNews(WebElement webnews, String type) {
         News news = new News();
         news.setUrl(webnews.getAttribute("href"));
         news.setTitle(webnews.getAttribute("aria-label"));
-        news.setTypeOfNews(typeOfNews);
+        news.setType(type);
         return news;
     }
 }

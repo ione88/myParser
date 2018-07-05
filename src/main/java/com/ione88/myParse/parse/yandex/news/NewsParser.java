@@ -1,6 +1,6 @@
-package parse.yandex.news;
+package com.ione88.myParse.parse.yandex.news;
 
-import parse.yandex.News;
+import com.ione88.myParse.entity.News;
 
 import java.util.ArrayList;
 
